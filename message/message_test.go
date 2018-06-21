@@ -8,7 +8,8 @@ import (
 )
 
 func TestUnmarshal(t *testing.T) {
-	msg := Message{uuid.NewV4(), uuid.NewV4(), []byte("Hello, World!")}
+	uuidv4, _ = uuid.NewV4()
+	msg := Message{uuidv4, uuidv4, []byte("Hello, World!")}
 	emsg := &Message{}
 	data, _ := json.Marshal(msg)
 	emsg.Unmarshal(data)
