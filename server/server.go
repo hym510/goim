@@ -93,7 +93,8 @@ func (server *Server) startTcp() {
 			log.Fatalln(err)
 			return
 		}
-		cli := client.New(uuid.NewV4(), conn)
+		uuidv4, _ := uuid.NewV4()
+		cli := client.New(uuidv4, conn)
 		server.clientTable[cli.Uuid] = cli
 		server.client <- cli
 		cli.Recive([]byte(cli.Uuid.String()))
